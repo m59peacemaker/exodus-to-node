@@ -1,0 +1,34 @@
+{
+	"name": "exodus-to-node",
+	"version": "0.0.0",
+	"description": "Takes paths or globs to exodus bundles and for each binary in the bundles, outputs a js module that exports the path to the binary.",
+	"main": "src/index.js",
+	"bin": "./src/bin/exodus-to-node",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [
+		"exodus",
+		"bundler",
+		"binary",
+		"standalone",
+		"portable",
+		"module",
+		"js",
+		"require",
+		"intoli"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/m59peacemaker/exodus-to-node"
+	},
+	"author": "Johnny Hauser <johnnyhauser@gmail.com>",
+	"license": "CC0-1.0",
+	"dependencies": {
+		"array.prototype.flat": "^1.2.1",
+		"globby": "^10.0.1",
+		"replace-ext": "^1.0.0",
+		"sade": "^1.6.1",
+		"tar": "^4.4.10"
+	}
+}

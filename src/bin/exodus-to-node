@@ -1,0 +1,19 @@
+#!/usr/bin/env node
+
+const sade = require('sade')
+const pkg = require('../../package.json')
+const exodusToNode = require('../')
+
+const prog = sade('exodus-to-node [...bundles]', true)
+	.version(pkg.version)
+	.describe(pkg.description)
+	.option('-o, --outdir', 'directory where bundles will be extracted and js modules will be written')
+	.example(`-o node_modules/.bin 'exodus-bundles/*.tgz'`)
+	.action(async (entry, { _, outdir }) => {
+		const bundles = [].concat(entry || [], _)
+		const bins = await exodusToNode({ bundles, outputDirectoryPath: outdir })
+		bins.forEach(({ bundleFilePath, bundleName, binName, jsFilePath }) => {
+			console.log(`Created js module "${jsFilePath}" for binary "${binName}".`)
+		})
+	})
+	.parse(process.argv)
